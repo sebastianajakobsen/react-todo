@@ -1,13 +1,37 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Todos from "./components/Todos";
+import './assets/main.css';
 
-function App() {
-  return (
-    <div className="text-2xl">
-      <header className="text-2xl">
-        Header
-      </header>
-    </div>
-  );
+class App extends Component {
+    state = {
+        todos: [
+            {
+                id: 1,
+                title: 'Take out trash',
+                completed: false,
+            },
+            {
+                id: 2,
+                title: 'Take a shower',
+                completed: false,
+            },
+            {
+                id: 3,
+                title: 'walk the dog',
+                completed: true,
+            }
+        ]
+    }
+
+    render() {
+        return (
+            <div className="text-2xl">
+                <h1>App</h1>
+                <Todos todos={this.state.todos} />
+            </div>
+        );
+    }
+
 }
 
 export default App;
