@@ -11,7 +11,7 @@ class TodoItem extends Component {
     return (
       <div
         className={
-          "p-4 border-b-2 " +
+          "p-4 shadow-md " +
           (this.props.todo.completed ? "line-through" : "none")
         }
       >
