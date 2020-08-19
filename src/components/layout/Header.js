@@ -12,7 +12,7 @@ import React from 'react';
 function Header() {
     return (
         <header>
-            <h1 className=" font-black text-2xl">TodoList</h1>
+            <h1 className=" font-black text-2xl mb-4">TodoList</h1>
         </header>
     )
 }

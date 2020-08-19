@@ -56,7 +56,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="p-4">
+      <div className="p-4 w-full max-w-lg m-auto mt-10">
         <Header />
         <AddTodo addTodo={this.addTodo}/>
         <Todos
