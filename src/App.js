@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Todos from "./components/Todos";
 import Header from "./components/layout/Header";
 import AddTodo from "./components/AddTodo";
+import About from "./components/pages/About";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./assets/main.css";
 
 class App extends Component {
@@ -46,25 +48,40 @@ class App extends Component {
 
   addTodo = (title) => {
     const newTodo = {
-      id:this.state.todos.length + 1,
+      id: this.state.todos.length + 1,
       // title:title
       title, // ES6
-      completed:false
-    }
-    this.setState({todos:[...this.state.todos, newTodo]})
-  }
+      completed: false,
+    };
+    this.setState({ todos: [...this.state.todos, newTodo] });
+  };
 
   render() {
     return (
-      <div className="p-4 w-full max-w-lg m-auto mt-10">
-        <Header />
-        <AddTodo addTodo={this.addTodo}/>
-        <Todos
-          todos={this.state.todos}
-          markComplete={this.markComplete}
-          deleteTodo={this.deleteTodo}
-        />
-      </div>
+      <Router>
+        <div className="p-4 w-full max-w-lg m-auto mt-10">
+          <Header />
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <React.Fragment>
+                  <AddTodo addTodo={this.addTodo} />
+                  <Todos
+                    todos={this.state.todos}
+                    markComplete={this.markComplete}
+                    deleteTodo={this.deleteTodo}
+                  />
+                </React.Fragment>
+              )}
+            />
+
+            <Route path="/about" component={About} />
+            {/* <Route path="/about">
+              <About />
+            </Route> */}
+        </div>
+      </Router>
     );
   }
 }
